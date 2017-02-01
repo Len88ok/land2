@@ -34,18 +34,35 @@ img{
 .header{
 	&_wrap{
 		background-color: #FFF;
-		padding: 1.5em 0;
+		padding: 0.5em 0;
 	}
 	&_logo{
 		float: left;		
 	}
 	&_phone{
-		padding: 0.5em 0;
+		padding: 0.4em 0;
 		float: right;
 		font-size: 47px;
 		font-weight: 400;
 	}
 }
+
+@media screen and (max-width: 480px ) {
+	.header{
+		&_wrap{
+			padding: 0.5em 0;
+		}
+		&_logo{
+			float: none;	
+			text-align: center;	
+		}
+		&_phone{
+			float: none;
+			text-align: center;	
+		}
+	}
+}
+
 
 .main{
 	&_content{
@@ -53,73 +70,85 @@ img{
 		padding: 30px 0;
 	}
 	&_bg{
-		background-size: 100%;
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		width: 100%;
-		height: 100%;
+		position: relative;
+		z-index:2;
+		overflow:hidden;
+		height: 640px;
 	}
 	&_caption{
+		position: absolute;
+	  top: 5%;
+	  left: -7%;
+	  right: 0;				  
+	  z-index: 999;
 		color: #3f93e9;
-		font-size: 30px;
-    margin-bottom: 270px;
-    margin-left: -40px;
+		font-size: 36px;
+		width: 50%;
+		text-align: center;
+		span{
+			font-family:"Guinness Extra Stout NF";
+			color: #f80707;
+		}
 	}
 	&_form{
 		padding-top: 300px; 
 	}
 }
-
-.security{
-	text-align: center;
-	&_text{
-		display: inline-block;
-		margin-left: 15%;
-		color: #fff;
-	}
-	&_systems{
-		float: right;
-		width: 26%;
-	}
-	&_item{
-		display: inline-block;
-		width: 23%;
-    margin-right: 1%;
-    img{
-    	height: 40px;
-    }
+@media screen and (max-width: 768px ) {
+	.main{
+		&_bg{
+			height: 230px;
+			margin-bottom: 210px;
+		}
+		&_caption{
+			top: 0;
+			left: 0;
+			font-size: 20px;
+			width: 100%;
+		}
 	}
 }
 
-.partners{
-	background-color: #FFF;
-	&_list{
-		width: 100%;
-    padding-left: 30px;
-	}
-	&_item{
-		display: inline-block;
-		width: 5%;
-		margin-right: 1%;
+@media screen and (max-width: 480px ) {
+	.main{
+		&_bg{
+			height: 170px;
+			margin-bottom: 160px;
+		}
+		&_caption{
+			font-size: 14px;
+		}
 	}
 }
 
-.license{
-	float: right;
-	color: #febd21;
-	text-transform: uppercase;
+video { 
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  bottom: 0;
+  min-width:100%;
+  min-height:100%;
+  background: url('../images/bg-min.png') no-repeat;
+	background-size: cover;	       
 }
 
 .form{
+	&_wrap{
+		position: absolute;
+		bottom: 24%;
+		left: -40px;
+		z-index: 999;
+	}
 	&_main{
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 	width: 400px;
 	background-color: transparent;
 	border-radius: 0;
 	padding: 30px 35px;
 	text-align: center;
-	margin-left: -40px;
 	margin-bottom: 20px;
 	&:after{
 		content: '';
@@ -148,7 +177,7 @@ img{
 	}	
 	&_row{
 		width: 100%;
-		margin-bottom: 15px;
+		margin-bottom: 30px;
 		input[type="text"], 
 		input[type="tel"]{
 			display: block;
@@ -177,15 +206,146 @@ img{
 			&:hover{
 				border: 1px solid #0072bc;
 				background-color: transparent;
+				color: #000;
 			}
 		}
-		&_caption{
-			float: left;
-	    margin-left: 40px;
+	}
+	&_caption{
+		float: left;
+    margin-left: 40px;
+	}
+	&_phone{
+		span{
+			font-size: 24px;
 		}
-	}	
-
+	}
 }
+
+@media screen and (max-width: 768px ) {
+	.form{
+		&_wrap{
+			bottom: 45%;
+			left: 0;
+		}
+		&_main{
+			width: 300px;
+			padding: 20px 25px;
+		}
+		&_row{
+			margin-bottom: 20px;
+			input[type="text"], 
+			input[type="tel"]{
+				padding: 10px 20px;
+			}
+			input[type="submit"]{
+				font-size: 14px;
+				padding: 10px 20px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px ) {
+	.form{
+		&_wrap{
+			bottom: 47%;
+		}
+		&_main{
+			width: 200px;
+			padding: 10px 15px;
+		}
+		&_row{
+			margin-bottom: 10px;
+			input[type="text"], 
+			input[type="tel"]{
+				padding: 5px 10px;
+			}
+			input[type="submit"]{
+				padding: 5px 10px;
+			}
+		}
+	}
+}
+
+
+.security{
+	text-align: center;
+	margin-bottom: 50px;
+	padding: 10px 0; 
+	&_text{
+		display: inline-block;
+		margin-left: 15%;
+		color: #fff;
+	}
+	&_systems{
+		float: right;
+		width: 26%;
+	}
+	&_item{
+		display: inline-block;
+		width: 23%;
+    margin-right: 1%;
+    img{
+    	height: 40px;
+    }
+	}
+}
+
+@media screen and (max-width: 768px ) {
+	.security{
+    margin-bottom: 20px;
+		&_text{
+			margin-left: 0;
+		}
+		&_systems{
+			float: none;
+			width: 100%;
+		}
+		&_item{
+		}
+	}
+}
+
+.partners{
+	background-color: #FFF;
+	&_list{
+		width: 100%;
+    padding-left: 30px;
+	}
+	&_item{
+		display: inline-block;
+		width: 5.5%;
+		margin-right: 1%;
+	}
+}
+
+@media screen and (max-width: 768px ) {
+	.partners{
+		&_list{
+	    padding-left: 8px;
+		}
+		&_item{
+			display: inline-block;
+			width: 17%;
+			margin-right: 1%;
+		}
+	}
+}
+
+.license{
+	float: right;
+	color: #febd21;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px ) {
+	.license{
+		float: none;
+		text-align: center;
+	}
+}
+
+
 
 
 .wpcf7-form-control-wrap{
